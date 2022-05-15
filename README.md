@@ -2,5 +2,5 @@
 ```
 npm install
 tsc
-npm start <url>
+npm start https://cuevana2.io/pelicula/dirty-work/
 ```
