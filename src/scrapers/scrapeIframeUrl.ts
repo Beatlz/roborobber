@@ -37,7 +37,7 @@ const scrapeIframeUrl = async (browser: Browser, url: string): Promise<string> =
       console.log(movieUrl)
 
       if (!movieUrl) {
-        throw new TypeError(`No movie url found`)
+        throw new TypeError(chalk.red(`No movie url found`))
       }
 
       const movieUrlMatch = checkIfMovieUrl(movieUrl)
