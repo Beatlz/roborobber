@@ -24,6 +24,7 @@
     "@": "/dist",
     "@types": "dist/types/",
     "@scrapers": "dist/scrapers/",
-    "@checks": "dist/checks/"
+    "@checks": "dist/checks/",
+    "@utils": "dist/utils/"
   }
 }
