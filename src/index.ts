@@ -18,15 +18,18 @@ const run = async (): Promise<void> => {
 		if (!checkIfCuevanaUrl(movie)) {
 			throw new TypeError(`Please paste a valid cuevana url in terminal`)
 		}
+		
+		const movieName = movie.split("/pelicula/").pop()
+		
+		console.log(chalk.magenta(`Scraping ${movieName}`))
 
-		const browser = await puppeteer.launch({ headless: true })
+		const browser = await puppeteer.launch({ headless: false })
 		const url = await scrapeIframeUrl(browser, movie)
-		const movieName = new URL(url).pathname.split("/").pop()
 		
 		console.log(chalk.green(`Enjoy ${movieName}!`))
 		console.log(chalk.blue(url))
-	} catch (error) {
-		return
+	} catch (error: any) {
+		console.log(chalk.red(error.message))
 	}
 }
 

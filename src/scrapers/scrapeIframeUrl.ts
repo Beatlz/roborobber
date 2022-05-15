@@ -7,8 +7,18 @@ const scrapeIframeUrl = async (browser: Browser, url: string): Promise<string> =
 			const page = await browser.newPage()
 
       await page.goto(url)
+      // await page.setRequestInterception(true)
+      
+      // page.on('request', request => {
+      //   console.log(request.url())
+      // })
+      page.waitForSelector('#cmc')
 
-      return ``
+      const src = await page.evaluate((): string => {
+        return document.querySelector('#cmc')?.getAttribute('src') || ``
+      })
+
+      return `https:${src}`
     } catch (error) {
       return ``
     }
