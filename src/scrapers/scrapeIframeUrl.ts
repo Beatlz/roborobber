@@ -9,10 +9,10 @@ const scrapeIframeUrl = async (browser: Browser, url: string): Promise<string> =
 			const page = await browser.newPage()
 
       await page.goto(url)
-      await page.waitForSelector('#cmc')
+      await page.waitForSelector('iframe')
 
       const src = await page.evaluate((): string => {
-        return document.querySelector('#cmc')?.getAttribute('src') || ``
+        return document.querySelector('iframe')?.getAttribute('src') || ``
       })
       
       await page.goto(`https:${src}`)
