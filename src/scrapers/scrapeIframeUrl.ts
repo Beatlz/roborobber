@@ -44,7 +44,7 @@ const scrapeIframeUrl = async (browser: Browser, url: string): Promise<string> =
 
       return movieUrlMatch || `No movie url found`
     } catch (error: any) {
-      console.log(chalk.red(error.message))
+      console.log(chalk.red(`scrapeIframeUrl: ${error.message}`))
       
       return error
     }
