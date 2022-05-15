@@ -28,6 +28,27 @@ const run = async (): Promise<void> => {
 		
 		console.log(chalk.green(`Enjoy ${movieName}!`))
 		console.log(chalk.blue(url))
+
+		const { platform } = require('os');
+		const { exec } = require('child_process');
+
+		const WINDOWS_PLATFORM = 'win32';
+		const MAC_PLATFORM = 'darwin';
+
+		const osPlatform = platform(); 
+
+		let command;
+
+		if (osPlatform === WINDOWS_PLATFORM) {
+			command = `start microsoft-edge:${url}`;
+		} else if (osPlatform === MAC_PLATFORM) {
+			command = `open -a "Google Chrome" ${url}`;
+		} else {
+			command = `google-chrome --no-sandbox ${url}`;
+		}
+		console.log(`executing command: ${command}`);
+
+		exec(command);
 	} catch (error: any) {
 		console.log(chalk.red(error.message))
 	} finally {
