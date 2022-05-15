@@ -6,7 +6,7 @@ import scrapeIframeUrl from "@scrapers/scrapeIframeUrl"
 import checkIfCuevanaUrl from "@checks/checkIfCuevanaUrl"
 
 const run = async (): Promise<void> => {
-	console.log(chalk.green(`Starting browser`))
+	console.log(`Starting browser...`)
 
 	const browser = await puppeteer.launch({ headless: true })
 
